@@ -18,3 +18,4 @@ toolchain
 Trufflehog
 dotnet
 sqledge
+Zaefferer
