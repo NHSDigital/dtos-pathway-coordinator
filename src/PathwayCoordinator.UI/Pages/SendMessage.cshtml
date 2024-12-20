@@ -1,0 +1,45 @@
+﻿@page
+@model PathwayCoordinator.UI.Pages.SendModel
+<div class="nhsuk-grid-row">
+  <div class="nhsuk-grid-column-two-thirds">
+    <h1 class="nhsuk-heading-l">Select a Pathway and Trigger Event</h1>
+    <form method="post">
+      <div class="nhsuk-form-group">
+        <label class="nhsuk-label" for="pathwaySelect">Pathway</label>
+        <select class="nhsuk-select" id="pathwaySelect" name="Pathway" asp-for="Event.Pathway" asp-items="@(new SelectList(Model.Pathways, "Name", "Name"))" onchange="this.form.submit()">
+          <option value="">-- Select a Pathway --</option>
+        </select>
+      </div>
+      @if (Model.AvailableSteps.Any())
+      {
+        <div>
+          <label class="nhsuk-label" for="eventSelect">Trigger Event</label>
+          <select class="nhsuk-select" id="eventSelect" name="TriggerEvent" asp-for="Event.TriggerEvent" asp-items="@(new SelectList(Model.AvailableSteps, "TriggerEvent", "TriggerEvent"))" onchange="this.form.submit()">
+            <option value="">Select an Event</option>
+          </select>
+        </div>
+      }
+      @if (!string.IsNullOrEmpty(Model.Event.Pathway))
+      {
+        <div>
+          <label class="nhsuk-label" for="payload">Payload:</label>
+          <textarea class="nhsuk-textarea" id="payload" name="Payload" asp-for="Event.Payload" value="@Model.PayloadTemplate" rows="5" cols="40"></textarea>
+        </div>
+      }
+      <button class="nhsuk-button" type="submit" disabled="@(string.IsNullOrEmpty(Model.Event.Pathway) || string.IsNullOrEmpty(Model.Event.TriggerEvent))">Send Message</button>
+    </form>
+  </div>
+  @if (TempData["Success"] != null)
+  {
+  <div class="nhsuk-notification-banner nhsuk-notification-banner--success">
+    <p class="nhsuk-notification-banner__content">@TempData["Success"]</p>
+  </div>
+  }
+
+  @if (TempData["Error"] != null)
+  {
+  <div class="nhsuk-notification-banner nhsuk-notification-banner--error">
+    <p class="nhsuk-notification-banner__content">@TempData["Error"]</p>
+  </div>
+  }
+</div>
