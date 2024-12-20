@@ -7,7 +7,6 @@ Welcome to the Pathway Coordinator product. The pathway coordinator is the centr
 
 It is essentially a workflow engine which executes azure functions in a designated order, depending on the screening pathway
 
-
 ## Table of Contents
 
 - [Repository Template](#repository-template)
@@ -15,8 +14,6 @@ It is essentially a workflow engine which executes azure functions in a designat
   - [Setup](#setup)
     - [Prerequisites](#prerequisites)
     - [Configuration](#configuration)
-  - [Usage](#usage)
-    - [Testing](#testing)
   - [Design](#design)
     - [Diagrams](#diagrams)
   - [Contributing](#contributing)
@@ -35,12 +32,12 @@ cd dtos-pathway-coordinator
 Running this locally, assumes that there is a ServiceBus and SQL Server running in a local docker container. This can be found in the folder /tests/LocalServiceBus
 
 Within that folder, running the following command will stand up a local servicebus and sqledge container that the application connects to.
+
 ```shell
 sudo docker compose -f docker-compose.yml up
 ```
 
 What I have found is that the sqledge container can be flaky, but stopping and starting usually results in it working.
-
 
 ### Prerequisites
 
@@ -73,6 +70,7 @@ The design here centres around the definition of a Pathway, currently this is re
   The idea is that the steps can become reuseable steps that can be reused across multiple pathways.
 
 This programme currently has 9 separate projects :-
+
 - Audit.API - This provides an API that allows the creation of a Audit Record in the SQL Database
 - Audit.Service - This is a message handler, listening for the AuditSubscriber subscription on the service bus. It then invokes the Audit.API to create the audit record
 - PathwayCoordinator.API - Provides a restful interface that returns the Pathway definitions, currently being pulled from a local json file
@@ -83,10 +81,9 @@ This programme currently has 9 separate projects :-
 - PathwayCoordinator.Tests - Just some simple tests
 - PathwayCoordinator.UI - Web interface used to put messages on the queue and test the integration between the components
 
-
 ### Diagrams
 
-For more detailed diagrams see this link - https://nhsd-confluence.digital.nhs.uk/display/DTS/Pathway+Coordinator
+For more detailed diagrams see this link - <https://nhsd-confluence.digital.nhs.uk/display/DTS/Pathway+Coordinator>
 
 ## Contributing
 
