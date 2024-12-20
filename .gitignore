@@ -11,3 +11,125 @@
 !project.code-workspace
 
 # Please, add your custom content below!
+
+
+###############################
+## Windows specific ignores ##
+###############################
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Windows shortcuts
+*.lnk
+
+#################################
+## Visual Studio configuration ##
+#################################
+.vs/
+.vscode/
+
+#################################
+## Rider configuration ##
+#################################
+.idea/
+
+#############################
+## ASP.NET Core specifics ##
+#############################
+# Debug and Release configuration files
+appsettings.Development.json
+
+# Auto-generated files
+bin/
+obj/
+out/
+
+# User-specific files
+*.user
+*.lock.json
+*.suo
+*.userosscache
+*.sln.docstates
+
+# Resharper files
+_ReSharper*/
+*.DotSettings.user
+
+################################
+## Visual Studio Code ignores ##
+################################
+# VS Code directories
+.vscode/
+
+# Local history
+.history/
+
+####################
+## Dependency ignores ##
+####################
+# NuGet packages
+*.nupkg
+packages/
+
+# .NET-specific artifacts
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+##################
+## Logs and Dumps ##
+##################
+*.log
+*.tlog
+*.dmp
+
+###################
+## Build Artifacts ##
+###################
+*.dll
+*.exe
+*.pdb
+*.cache
+*.ilk
+*.obj
+*.lib
+*.so
+*.dylib
+*.class
+*.ps1
+*.psm1
+*.pyc
+
+#################
+## OS Specific ##
+#################
+# macOS
+.DS_Store
+
+# Linux
+*~
+
+#################
+## Secrets ##
+#################
+secrets.json
+*.key
+
+###############
+## Testing ##
+###############
+*.coverage
+TestResults/
+
+###################
+## Git Specific ##
+###################
+*.orig
+*.rej
