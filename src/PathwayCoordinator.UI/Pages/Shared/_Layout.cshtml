@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@ViewData["Title"] - Pathway Coordinator</title>
+  <link rel="stylesheet" href="/nhsuk/css/nhsuk-9.1.0.min.css">
+  <script src="/nhsuk/js/nhsuk-9.1.0.min.js"></script>
+</head>
+<body class="nhsuk-template__body">
+<header class="nhsuk-header nhsuk-header--transactional">
+  <div class="nhsuk-width-container">
+    <div class="nhsuk-header__logo">
+      <a href="/" class="nhsuk-header__link nhsuk-header__link--service">
+        <span class="nhsuk-header__service-name">Pathway Coordinator</span>
+      </a>
+    </div>
+  </div>
+</header>
+
+<div class="nhsuk-width-container">
+  <main class="nhsuk-main-wrapper" id="content" role="main">
+    @RenderBody()
+  </main>
+</div>
+
+<footer class="nhsuk-footer" role="contentinfo">
+  <div class="nhsuk-width-container">
+    <p class="nhsuk-footer__copyright">&copy; 2024 Pathway Coordinator</p>
+  </div>
+</footer>
+</body>
+</html>
