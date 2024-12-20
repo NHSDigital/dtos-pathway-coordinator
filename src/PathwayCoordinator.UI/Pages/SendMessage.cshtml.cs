@@ -19,7 +19,6 @@ namespace PathwayCoordinator.UI.Pages
     public List<Pathway> Pathways { get; set; } = new();
     [BindProperty]
     public List<PathwayStep> AvailableSteps { get; set; } = new();
-
     public string PayloadTemplate { get; set; }
 
     private readonly IConfiguration _configuration;
@@ -38,41 +37,30 @@ namespace PathwayCoordinator.UI.Pages
 
     public async Task<IActionResult> OnPostAsync()
     {
-      //If we have a Selected Pathway, but nothing else we need to populate the rest of the objects
-      Pathways = await _apiClient.GetPathwaysAsync();
-      if (!string.IsNullOrEmpty(Event.Pathway) &&
-          (string.IsNullOrEmpty(Event.TriggerEvent) || string.IsNullOrEmpty(Event.Payload)))
-      {
-        var selectedPathway = Pathways.FirstOrDefault(p => p.Name == Event.Pathway);
-        AvailableSteps = selectedPathway?.Steps ?? new List<PathwayStep>();
-        PayloadTemplate = "";
-      }
+      //If all the data is populated, then we're going to submit to a queue
 
-      if (!string.IsNullOrEmpty(Event.Pathway) &&
-          (!string.IsNullOrEmpty(Event.TriggerEvent) && string.IsNullOrEmpty(Event.Payload)))
-      {
-        var selectedPathway = Pathways.FirstOrDefault(p => p.Name == Event.Pathway);
-        var selectedStep = selectedPathway?.Steps.FirstOrDefault(s => s.TriggerEvent == Event.TriggerEvent);
-        PayloadTemplate = selectedStep.MessageTemplate.ToString();
-      }
-
-      // Validate and process the form submission
       if (string.IsNullOrEmpty(Event.Pathway) ||
           string.IsNullOrEmpty(Event.TriggerEvent) ||
-          string.IsNullOrEmpty(Event.Payload))
+          string.IsNullOrEmpty(Event.Payload) ||
+          Event.Payload.Contains("{{"))
       {
-        ModelState.AddModelError(string.Empty, "All fields are required.");
+        //We haven't got a data set yet, so we're going to return the page, but first we need to set the
+        //dropdowns properly
+        Pathways = await _apiClient.GetPathwaysAsync();
+        AvailableSteps = Pathways.FirstOrDefault(p => p.Name == Event.Pathway)?.Steps;
+        PayloadTemplate = AvailableSteps.FirstOrDefault(s => s.TriggerEvent == Event.TriggerEvent)?.MessageTemplate.ToString();
+        Event.Payload = PayloadTemplate;
         return Page();
       }
-      var client = new ServiceBusClient(_configuration.GetConnectionString("ServiceBusConnection"));
-
-      var queueSender = client.CreateSender("participant-events-topic");
-      var serviceBusMessage = new ServiceBusMessage(JsonSerializer.Serialize(Event));
-
-      await queueSender.SendMessageAsync(serviceBusMessage);
-
-      // Return to the page after submission
-      return RedirectToPage();
+      else
+      {
+        var client = new ServiceBusClient(_configuration.GetConnectionString("ServiceBusConnection"));
+        var queueSender = client.CreateSender("participant-events-topic");
+        var serviceBusMessage = new ServiceBusMessage(JsonSerializer.Serialize(Event));
+        await queueSender.SendMessageAsync(serviceBusMessage);
+        // Return to the page after submission
+        return RedirectToPage();
+      }
     }
   }
 }
