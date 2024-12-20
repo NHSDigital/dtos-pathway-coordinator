@@ -6,7 +6,7 @@
     <form method="post">
       <div class="nhsuk-form-group">
         <label class="nhsuk-label" for="pathwaySelect">Pathway</label>
-        <select class="nhsuk-select" id="pathwaySelect" name="Pathway" asp-for="Event.Pathway" asp-items="@(new SelectList(Model.Pathways, "Name", "Name"))" onchange="this.form.submit()">
+        <select class="nhsuk-select" id="pathwaySelect" name="Pathway" asp-for="Event.Pathway" asp-items="@(new SelectList(Model.Pathways, "Name", "Name"))" onchange="this.form.submit('change')">
           <option value="">-- Select a Pathway --</option>
         </select>
       </div>
@@ -14,7 +14,7 @@
       {
         <div>
           <label class="nhsuk-label" for="eventSelect">Trigger Event</label>
-          <select class="nhsuk-select" id="eventSelect" name="TriggerEvent" asp-for="Event.TriggerEvent" asp-items="@(new SelectList(Model.AvailableSteps, "TriggerEvent", "TriggerEvent"))" onchange="this.form.submit()">
+          <select class="nhsuk-select" id="eventSelect" name="TriggerEvent" asp-for="Event.TriggerEvent" asp-items="@(new SelectList(Model.AvailableSteps, "TriggerEvent", "TriggerEvent"))" onchange="this.form.submit('change')">
             <option value="">Select an Event</option>
           </select>
         </div>
@@ -23,7 +23,8 @@
       {
         <div>
           <label class="nhsuk-label" for="payload">Payload:</label>
-          <textarea class="nhsuk-textarea" id="payload" name="Payload" asp-for="Event.Payload" value="@Model.PayloadTemplate" rows="5" cols="40"></textarea>
+          <textarea class="nhsuk-textarea" id="payload" name="Payload" asp-for="Event.Payload" rows="5" cols="40">
+          </textarea>
         </div>
       }
       <button class="nhsuk-button" type="submit" disabled="@(string.IsNullOrEmpty(Model.Event.Pathway) || string.IsNullOrEmpty(Model.Event.TriggerEvent))">Send Message</button>
