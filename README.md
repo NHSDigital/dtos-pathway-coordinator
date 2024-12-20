@@ -32,49 +32,57 @@ git clone https://github.com/NHSDigital/dtos-pathway-coordinator
 cd dtos-pathway-coordinator
 ```
 
+Running this locally, assumes that there is a ServiceBus and SQL Server running in a local docker container. This can be found in the folder /tests/LocalServiceBus
+
+Within that folder, running the following command will stand up a local servicebus and sqledge container that the application connects to.
+```shell
+sudo docker compose -f docker-compose.yml up
+```
+
+What I have found is that the sqledge container can be flaky, but stopping and starting usually results in it working.
+
+
 ### Prerequisites
 
 The following software packages, or their equivalents, are expected to be installed and configured:
 
 - [Docker](https://www.docker.com/) container runtime or a compatible tool, e.g. [Podman](https://podman.io/),
-- [asdf](https://asdf-vm.com/) version manager,
-- [GNU make](https://www.gnu.org/software/make/) 3.82 or later,
-
-> [!NOTE]<br>
-> The version of GNU make available by default on macOS is earlier than 3.82. You will need to upgrade it or certain `make` tasks will fail. On macOS, you will need [Homebrew](https://brew.sh/) installed, then to install `make`, like so:
->
-> ```shell
-> brew install make
-> ```
->
-> You will then see instructions to fix your [`$PATH`](https://github.com/nhs-england-tools/dotfiles/blob/main/dot_path.tmpl) variable to make the newly installed version available. If you are using [dotfiles](https://github.com/nhs-england-tools/dotfiles), this is all done for you.
-
-- [GNU sed](https://www.gnu.org/software/sed/) and [GNU grep](https://www.gnu.org/software/grep/) are required for the scripted command-line output processing,
-- [GNU coreutils](https://www.gnu.org/software/coreutils/) and [GNU binutils](https://www.gnu.org/software/binutils/) may be required to build dependencies like Python, which may need to be compiled during installation,
-
-> [!NOTE]<br>
-> For macOS users, installation of the GNU toolchain has been scripted and automated as part of the `dotfiles` project. Please see this [script](https://github.com/nhs-england-tools/dotfiles/blob/main/assets/20-install-base-packages.macos.sh) for details.
-
-- [Python](https://www.python.org/) required to run Git hooks,
-- [`jq`](https://jqlang.github.io/jq/) a lightweight and flexible command-line JSON processor.
 
 ### Configuration
 
-Installation and configuration of the toolchain dependencies
-
-```shell
-make config
-```
-
-## Usage
-
-After a successful installation, provide an informative example of how this project can be used. Additional code snippets, screenshots and demos work well in this space. You may also link to the other documentation resources, e.g. the [User Guide](./docs/user-guide.md) to demonstrate more use cases and to show more features.
-
-### Testing
-
-There are `make` tasks for you to configure to run your tests.  Run `make test` to see how they work.  You should be able to use the same entry points for local development as in your CI pipeline.
+This is a dotnet project and as such the dotnet restore will result in the application running
 
 ## Design
+
+The design here centres around the definition of a Pathway, currently this is represented as a json object
+
+  {
+    "Name": "High Risk Breast",
+    "Steps": [
+      { "Type": "AddParticipantToPathway", "TriggerEvent": "ParticipantEligible", "MessageTemplate": {
+        "NhsNumber": "{{nhsNumber}}",
+        "Pathway" : "{{pathway}}"
+        }
+      },
+      { "Type": "UpdateParticipantPathwayStatus", "TriggerEvent": "ParticipantAccepted", "MessageTemplate": { "Status": "Invited" } }
+    ]
+  }
+
+  Each pathway comprises of a series of Steps. A step has a triggering event for a specific pathway and a message template representing the data required by the step to perform it's action. The Type of Step will map to a specific Step within the Steps folder of the PathwayCoordinator.PathwayManager project.
+
+  The idea is that the steps can become reuseable steps that can be reused across multiple pathways.
+
+This programme currently has 9 separate projects :-
+- Audit.API - This provides an API that allows the creation of a Audit Record in the SQL Database
+- Audit.Service - This is a message handler, listening for the AuditSubscriber subscription on the service bus. It then invokes the Audit.API to create the audit record
+- PathwayCoordinator.API - Provides a restful interface that returns the Pathway definitions, currently being pulled from a local json file
+- PathwayCoordinator.Interfaces - Collection of interfaces used across all projects, a way of avoiding cyclic dependencies
+- PathwayCoordinator.Models - Set of Domain models used across all projects
+- PathwayCoordinator.Messaging - Message handler that subscribes the PathwayInvocationSubscription and invokes the PathwayManager
+- PathwayCoordinator.PathwayManager - Invoked by the message handler than knows about the state that's been passed, brings together the data needed for the next call and invokes a PathwayStep
+- PathwayCoordinator.Tests - Just some simple tests
+- PathwayCoordinator.UI - Web interface used to put messages on the queue and test the integration between the components
+
 
 ### Diagrams
 

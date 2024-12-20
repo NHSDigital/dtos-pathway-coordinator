@@ -1,0 +1,24 @@
+[
+  {
+    "Name": "Regular Breast Pathway",
+    "Steps": [
+      { "Type": "AddParticipantToPathway", "TriggerEvent": "ParticipantEligible", "MessageTemplate": {
+          "NhsNumber": "{{nhsNumber}}",
+          "Pathway" : "{{pathway}}"
+        }
+      },
+      { "Type": "CreateParticipantEpisode", "TriggerEvent": "ParticipantInvited", "MessageTemplate": { "NhsNumber": "{{nhsNumber}}" } }
+    ]
+  },
+  {
+    "Name": "High Risk Breast",
+    "Steps": [
+      { "Type": "AddParticipantToPathway", "TriggerEvent": "ParticipantEligible", "MessageTemplate": {
+        "NhsNumber": "{{nhsNumber}}",
+        "Pathway" : "{{pathway}}"
+        }
+      },
+      { "Type": "UpdateParticipantPathwayStatus", "TriggerEvent": "ParticipantAccepted", "MessageTemplate": { "Status": "Invited" } }
+    ]
+  }
+]

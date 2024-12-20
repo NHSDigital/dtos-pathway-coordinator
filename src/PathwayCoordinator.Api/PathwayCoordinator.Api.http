@@ -1,0 +1,6 @@
+@PathwayCoordinator.Api_HostAddress = http://localhost:5100
+
+GET {{PathwayCoordinator.Api_HostAddress}}/api/pathways/
+Accept: application/json
+
+###

@@ -1,0 +1,213 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/leegathercole/LAG/Fathomatics/code/dtos-pathway-coordinator/src/PathwayCoordinator.UI/PathwayCoordinator.UI.csproj": {}
+  },
+  "projects": {
+    "/Users/leegathercole/LAG/Fathomatics/code/dtos-pathway-coordinator/src/PathwayCoordinator.Interfaces/PathwayCoordinator.Interfaces.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/leegathercole/LAG/Fathomatics/code/dtos-pathway-coordinator/src/PathwayCoordinator.Interfaces/PathwayCoordinator.Interfaces.csproj",
+        "projectName": "PathwayCoordinator.Interfaces",
+        "projectPath": "/Users/leegathercole/LAG/Fathomatics/code/dtos-pathway-coordinator/src/PathwayCoordinator.Interfaces/PathwayCoordinator.Interfaces.csproj",
+        "packagesPath": "/Users/leegathercole/.nuget/packages/",
+        "outputPath": "/Users/leegathercole/LAG/Fathomatics/code/dtos-pathway-coordinator/src/PathwayCoordinator.Interfaces/obj/",
+        "projectStyle": "PackageReference",
+        "UsingMicrosoftNETSdk": false,
+        "configFilePaths": [
+          "/Users/leegathercole/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/leegathercole/LAG/Fathomatics/code/dtos-pathway-coordinator/src/PathwayCoordinator.Models/PathwayCoordinator.Models.csproj": {
+                "projectPath": "/Users/leegathercole/LAG/Fathomatics/code/dtos-pathway-coordinator/src/PathwayCoordinator.Models/PathwayCoordinator.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/leegathercole/LAG/Fathomatics/code/dtos-pathway-coordinator/src/PathwayCoordinator.Models/PathwayCoordinator.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/leegathercole/LAG/Fathomatics/code/dtos-pathway-coordinator/src/PathwayCoordinator.Models/PathwayCoordinator.Models.csproj",
+        "projectName": "PathwayCoordinator.Models",
+        "projectPath": "/Users/leegathercole/LAG/Fathomatics/code/dtos-pathway-coordinator/src/PathwayCoordinator.Models/PathwayCoordinator.Models.csproj",
+        "packagesPath": "/Users/leegathercole/.nuget/packages/",
+        "outputPath": "/Users/leegathercole/LAG/Fathomatics/code/dtos-pathway-coordinator/src/PathwayCoordinator.Models/obj/",
+        "projectStyle": "PackageReference",
+        "UsingMicrosoftNETSdk": false,
+        "configFilePaths": [
+          "/Users/leegathercole/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "/Users/leegathercole/LAG/Fathomatics/code/dtos-pathway-coordinator/src/PathwayCoordinator.UI/PathwayCoordinator.UI.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/leegathercole/LAG/Fathomatics/code/dtos-pathway-coordinator/src/PathwayCoordinator.UI/PathwayCoordinator.UI.csproj",
+        "projectName": "PathwayCoordinator.UI",
+        "projectPath": "/Users/leegathercole/LAG/Fathomatics/code/dtos-pathway-coordinator/src/PathwayCoordinator.UI/PathwayCoordinator.UI.csproj",
+        "packagesPath": "/Users/leegathercole/.nuget/packages/",
+        "outputPath": "/Users/leegathercole/LAG/Fathomatics/code/dtos-pathway-coordinator/src/PathwayCoordinator.UI/obj/",
+        "projectStyle": "PackageReference",
+        "UsingMicrosoftNETSdk": false,
+        "configFilePaths": [
+          "/Users/leegathercole/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net9.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net9.0": {
+            "targetAlias": "net9.0",
+            "projectReferences": {
+              "/Users/leegathercole/LAG/Fathomatics/code/dtos-pathway-coordinator/src/PathwayCoordinator.Interfaces/PathwayCoordinator.Interfaces.csproj": {
+                "projectPath": "/Users/leegathercole/LAG/Fathomatics/code/dtos-pathway-coordinator/src/PathwayCoordinator.Interfaces/PathwayCoordinator.Interfaces.csproj"
+              },
+              "/Users/leegathercole/LAG/Fathomatics/code/dtos-pathway-coordinator/src/PathwayCoordinator.Models/PathwayCoordinator.Models.csproj": {
+                "projectPath": "/Users/leegathercole/LAG/Fathomatics/code/dtos-pathway-coordinator/src/PathwayCoordinator.Models/PathwayCoordinator.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net9.0": {
+          "targetAlias": "net9.0",
+          "dependencies": {
+            "Azure.Messaging.ServiceBus": {
+              "target": "Package",
+              "version": "[7.18.2, )"
+            },
+            "Microsoft.Extensions.Configuration": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            },
+            "Microsoft.Extensions.Configuration.Json": {
+              "target": "Package",
+              "version": "[9.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/9.0.101/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

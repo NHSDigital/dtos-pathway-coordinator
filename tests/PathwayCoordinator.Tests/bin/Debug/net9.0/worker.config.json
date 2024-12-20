@@ -1,0 +1,10 @@
+{
+  "description": {
+    "language": "dotnet-isolated",
+    "extensions": [ ".dll" ],
+    "defaultExecutablePath": "dotnet",
+    "defaultWorkerPath": "PathwayCoordinator.Messaging.dll",
+    "workerIndexing": "true",
+    "canUsePlaceholder": true
+  }
+}

@@ -1,0 +1,20 @@
+### Get all events
+GET {{Audit.Api_HostAddress}}/api/audit/events/
+Accept: application/json
+
+###
+### Create a new event
+POST {{Audit.Api_HostAddress}}/api/audit/events
+Content-Type: application/json
+
+{
+  "nhsNumber": "1234567890",
+  "eventName": "New Participant",
+  "nextAction": "Send Invitation",
+  "timestamp": "2023-12-19T12:34:56",
+  "duration": "00:01:23"
+}
+
+### Get a single event by ID
+GET {{Audit.Api_HostAddress}}/api/audit/events?nhsNumber=1234567890
+i th

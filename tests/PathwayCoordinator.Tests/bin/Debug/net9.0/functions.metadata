@@ -1,0 +1,24 @@
+[
+  {
+    "name": "ParticipantEventHandler",
+    "scriptFile": "PathwayCoordinator.Messaging.dll",
+    "entryPoint": "PathwayCoordinator.Messaging.ParticipantEventHandler.Run",
+    "language": "dotnet-isolated",
+    "properties": {
+      "IsCodeless": false
+    },
+    "bindings": [
+      {
+        "name": "message",
+        "direction": "In",
+        "type": "serviceBusTrigger",
+        "dataType": "String",
+        "topicName": "participant-events-topic",
+        "subscriptionName": "PathwayInvocationSubscription",
+        "connection": "ServiceBusConnection",
+        "cardinality": "One",
+        "properties": {}
+      }
+    ]
+  }
+]
