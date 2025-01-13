@@ -22,7 +22,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\src\PathwayCoordinator.Messaging\PathwayCoordinator.Messaging.csproj" />
+    <ProjectReference Include="..\..\src\PathwayCoordinator.EventHandlers\PathwayCoordinator.EventHandlers.csproj" />
   </ItemGroup>
 
 </Project>

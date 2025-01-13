@@ -15,6 +15,8 @@ public class EventAudit()
   public string EventName { get; set; }
   public string Pathway { get; set; }
   public string NextAction { get; set; }
-  public DateTime Timestamp { get; set; }
+  public DateTimeOffset Timestamp { get; set; }
+
+  public string Version { get; set; }
   public TimeSpan Duration { get; set; }
 }

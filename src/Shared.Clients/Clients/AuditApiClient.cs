@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using PathwayCoordinator.Interfaces;
 using PathwayCoordinator.Models;
 
-namespace Audit.Service.Clients;
+namespace Shared.Clients.Clients;
 
 public class AuditApiClient (HttpClient httpClient, ILogger<AuditApiClient> logger): IAuditApiClient
 {

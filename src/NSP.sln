@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathwayCoordinator.UI", "PathwayCoordinator.UI\PathwayCoordinator.UI.csproj", "{F9FD75F3-E485-4D4B-ABF2-A5B0523FBB01}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathwayCoordinator.Messaging", "PathwayCoordinator.Messaging\PathwayCoordinator.Messaging.csproj", "{C75C2BE5-D98E-4D22-9405-1D044CCC708D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathwayCoordinator.EventHandlers", "PathwayCoordinator.EventHandlers\PathwayCoordinator.EventHandlers.csproj", "{C75C2BE5-D98E-4D22-9405-1D044CCC708D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathwayCoordinator.PathwayManager", "PathwayCoordinator.PathwayManager\PathwayCoordinator.PathwayManager.csproj", "{A56921B9-8859-4C30-A65A-EF7A4F8EF4CE}"
 EndProject
@@ -17,9 +17,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathwayCoordinator.Interfac
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PathwayCoordinator.Api", "PathwayCoordinator.Api\PathwayCoordinator.Api.csproj", "{663DF99D-27CD-45D7-A02D-F01B39FF55DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audit.Service", "Audit.Service\Audit.Service.csproj", "{8EEFE83A-CE37-49EA-BA97-C4DD88E07B47}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audit.Api", "Audit.Api\Audit.Api.csproj", "{F87095DE-9794-46E3-B376-F78703280DBB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Clients", "Shared.Clients\Shared.Clients.csproj", "{2B5D903E-7B36-4B5D-B0C9-9E7F2EB7081B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -58,13 +58,13 @@ Global
 		{663DF99D-27CD-45D7-A02D-F01B39FF55DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{663DF99D-27CD-45D7-A02D-F01B39FF55DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{663DF99D-27CD-45D7-A02D-F01B39FF55DB}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8EEFE83A-CE37-49EA-BA97-C4DD88E07B47}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8EEFE83A-CE37-49EA-BA97-C4DD88E07B47}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8EEFE83A-CE37-49EA-BA97-C4DD88E07B47}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8EEFE83A-CE37-49EA-BA97-C4DD88E07B47}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F87095DE-9794-46E3-B376-F78703280DBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F87095DE-9794-46E3-B376-F78703280DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F87095DE-9794-46E3-B376-F78703280DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F87095DE-9794-46E3-B376-F78703280DBB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2B5D903E-7B36-4B5D-B0C9-9E7F2EB7081B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2B5D903E-7B36-4B5D-B0C9-9E7F2EB7081B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2B5D903E-7B36-4B5D-B0C9-9E7F2EB7081B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2B5D903E-7B36-4B5D-B0C9-9E7F2EB7081B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
