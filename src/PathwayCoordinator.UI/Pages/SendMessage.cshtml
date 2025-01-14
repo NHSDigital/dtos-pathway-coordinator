@@ -22,6 +22,10 @@
       @if (!string.IsNullOrEmpty(Model.Event.Pathway))
       {
         <div>
+          <label class="nhsuk-label" for="payload">NhsNumber:</label>
+          <input class="nhsuk-input" id="payload" name="NhsNumber" asp-for="Event.NhsNumber"/>
+        </div>
+        <div>
           <label class="nhsuk-label" for="payload">Payload:</label>
           <textarea class="nhsuk-textarea" id="payload" name="Payload" asp-for="Event.Payload" rows="5" cols="40">
           </textarea>

@@ -16,6 +16,18 @@
             "disableValidation": true
           }
         ]
+      },
+      {
+        "name": "evtgrd-participant-manager",
+        "port": 60102,
+        "key": "TheLocal+DevelopmentKey=",
+        "subscribers": [
+          {
+            "name": "ParticipantManagerSubscription",
+            "endpoint": "http://host.docker.internal:7130/runtime/webhooks/EventGrid?functionName=MockProductHandler",
+            "disableValidation": true
+          }
+        ]
       }
     ]
   }

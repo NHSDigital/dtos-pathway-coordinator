@@ -2,10 +2,7 @@
   {
     "Name": "Regular Breast Pathway",
     "Steps": [
-      { "Type": "AddParticipantToPathway", "TriggerEvent": "ParticipantEligible", "MessageTemplate": {
-          "nhsNumber": "{{nhsNumber}}",
-          "pathway" : "{{pathway}}"
-        }
+      { "Type": "AddParticipantToPathway", "TriggerEvent": "ParticipantEligible", "MessageTemplate": {}
       },
       { "Type": "CreateParticipantEpisode", "TriggerEvent": "ParticipantInvited", "MessageTemplate": { "nhsNumber": "{{nhsNumber}}" } },
       { "Type": "InviteToBook", "TriggerEvent": "ParticipantReadyToBook", "MessageTemplate": { "nhsNumber": "{{nhsNumber}}" } }
