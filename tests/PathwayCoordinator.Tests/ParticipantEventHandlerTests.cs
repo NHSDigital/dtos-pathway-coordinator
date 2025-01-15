@@ -1,12 +1,15 @@
 ﻿using System.Text.Json;
+using Azure.Messaging.EventGrid;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 using Moq;
 using PathwayCoordinator.Interfaces;
-using PathwayCoordinator.Messaging;
+using PathwayCoordinator.EventHandler;
+using PathwayCoordinator.EventHandler.Handlers;
 using PathwayCoordinator.Models;
 using PathwayCoordinator.PathwayManager.Utils;
+using Shared.Clients.Interfaces;
 
 namespace PathwayCoordinator.Tests;
 
@@ -43,8 +46,9 @@ public class ParticipantEventHandlerTests
     // Mock FunctionContext
     var mockFunctionContext = new Mock<FunctionContext>();
 
+    var eventGridEvent = new EventGridEvent("/participants/12345", "ParticipantInvited", "0.1", testEvent, typeof(GenericEvent));
     // Act
-    await handler.Run(serializedMessage, mockFunctionContext.Object);
+    await handler.Run(eventGridEvent);
     // Assert
     mockPathwayManager.Verify(
       x => x.ExecuteStepsAsync(It.IsAny<Pathway>(), It.IsAny<GenericEvent>()),

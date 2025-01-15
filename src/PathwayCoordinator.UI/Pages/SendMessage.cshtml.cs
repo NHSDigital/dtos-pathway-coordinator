@@ -5,6 +5,7 @@ using Azure.Messaging.ServiceBus;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using PathwayCoordinator.Interfaces;
 using PathwayCoordinator.Models;
+using Shared.Clients.Interfaces;
 
 namespace PathwayCoordinator.UI.Pages
 {
@@ -54,10 +55,7 @@ namespace PathwayCoordinator.UI.Pages
       }
       else
       {
-        var client = new ServiceBusClient(_configuration.GetConnectionString("ServiceBusConnection"));
-        var queueSender = client.CreateSender("participant-events-topic");
-        var serviceBusMessage = new ServiceBusMessage(JsonSerializer.Serialize(Event));
-        await queueSender.SendMessageAsync(serviceBusMessage);
+        await _apiClient.PublishEvent(JsonSerializer.Serialize(Event));
         // Return to the page after submission
         return RedirectToPage();
       }

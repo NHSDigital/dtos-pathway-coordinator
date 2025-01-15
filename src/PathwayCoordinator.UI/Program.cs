@@ -1,4 +1,8 @@
+using Microsoft.Extensions.Options;
 using PathwayCoordinator.Interfaces;
+using PathwayCoordinator.Models;
+using Shared.Clients.Clients;
+using Shared.Clients.Interfaces;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -9,7 +13,12 @@ builder.Configuration
 
 builder.Services.AddRazorPages();
 builder.Services.AddControllers();
-builder.Services.AddHttpClient<IPathwayApiClient, PathwayApiClient>();
+
+builder.Services.AddHttpClient<IPathwayApiClient, PathwayApiClient>((sp, client) =>
+{
+    client.BaseAddress = new Uri(builder.Configuration["PathwayApiClient:BaseAddress"]);
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -21,7 +21,8 @@ namespace PathwayCoordinator.PathwayManager
           var processor = new TemplateProcessor();
           var populatedTemplate = processor.PopulateTemplate(triggeredStep.MessageTemplate.ToString(), genericEvent.Payload);
           //Need to munge together the step template and some data somehow
-          await pathwayStep.ExecuteAsync(populatedTemplate);
+          genericEvent.Payload = populatedTemplate;
+          await pathwayStep.ExecuteAsync(genericEvent);
         }
         else
         {

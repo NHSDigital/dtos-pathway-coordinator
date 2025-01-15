@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Logging;
+using PathwayCoordinator.Models;
 
 namespace PathwayCoordinator.Interfaces
 {
@@ -6,6 +7,6 @@ namespace PathwayCoordinator.Interfaces
   {
     protected readonly ILogger Logger = logger;
 
-    public abstract Task ExecuteAsync(dynamic details);
+    public abstract Task ExecuteAsync(GenericEvent details);
   }
 }
