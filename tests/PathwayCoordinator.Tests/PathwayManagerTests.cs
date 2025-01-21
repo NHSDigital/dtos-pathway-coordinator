@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging;
 using Moq;
 using PathwayCoordinator.Models;
 using PathwayCoordinator.PathwayManager.Steps;
+using Shared.Clients.Interfaces;
 
 namespace PathwayCoordinator.Tests;
 
@@ -13,9 +14,10 @@ public class PathwayManagerTests
   {
     // Arrange
     var mockLogger = new Mock<ILogger<AddParticipantToPathway>>();
+    var mockApiClient = new Mock<IPathwayApiClient>();
     var mockPathwayLogger = new Mock<ILogger<PathwayManager.PathwayManager>>();
     var services = new ServiceCollection();
-    services.AddScoped<AddParticipantToPathway>(_ => new AddParticipantToPathway(mockLogger.Object));
+    services.AddScoped<AddParticipantToPathway>(_ => new AddParticipantToPathway(mockLogger.Object, mockApiClient.Object));
     var serviceProvider = services.BuildServiceProvider();
 
     var pathwayManager = new PathwayManager.PathwayManager(mockPathwayLogger.Object, serviceProvider);

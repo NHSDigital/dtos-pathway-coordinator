@@ -10,10 +10,10 @@ namespace PathwayCoordinator.PathwayManager.Steps
 {
   public class CreateParticipantEpisode (ILogger<CreateParticipantEpisode> logger) : PathwayStepBase(logger)
   {
-    public override Task ExecuteAsync(GenericEvent details)
+    public override Task<Task> ExecuteAsync(GenericEvent details)
     {
       logger.LogInformation($"Creating an episode for participant: {details}");
-      return Task.CompletedTask;
+      return Task.FromResult(Task.CompletedTask);
     }
   }
 }

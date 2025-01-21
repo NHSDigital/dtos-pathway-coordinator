@@ -61,7 +61,7 @@ public class ParticipantEventHandlerTests
         LogLevel.Information,
         It.IsAny<EventId>(),
         It.Is<It.IsAnyType>((v, t) =>
-          v.ToString().Contains($"Received event on participant-events queue : {testEvent.TriggerEvent}")),
+          v.ToString().Contains($"Received event on participant-events queue : {testEvent.EventName}")),
         null,
         It.IsAny<Func<It.IsAnyType, Exception, string>>()
       ),

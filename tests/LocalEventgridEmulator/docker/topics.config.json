@@ -14,6 +14,11 @@
             "name": "AuditSubscription",
             "endpoint": "http://host.docker.internal:7130/runtime/webhooks/EventGrid?functionName=AuditEventHandler",
             "disableValidation": true
+          },
+          {
+            "name": "ContextManagerSubscription",
+            "endpoint": "http://host.docker.internal:7130/runtime/webhooks/EventGrid?functionName=ContextManagerEventHandler",
+            "disableValidation": true
           }
         ]
       },

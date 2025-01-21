@@ -7,6 +7,6 @@ namespace PathwayCoordinator.Interfaces
   {
     protected readonly ILogger Logger = logger;
 
-    public abstract Task ExecuteAsync(GenericEvent details);
+    public abstract Task<Task> ExecuteAsync(GenericEvent details);
   }
 }

@@ -6,16 +6,20 @@ public class GenericEvent
   {
 
   }
-  public GenericEvent(string triggerEvent, string pathway, string payload)
+  public GenericEvent(string eventName, string pathway, string payload)
   {
-    TriggerEvent = triggerEvent;
+    EventName = eventName;
     Pathway = pathway;
     Payload = payload;
+    Id = Guid.NewGuid();
   }
 
-  public string TriggerEvent { get; set; } // The type of event (e.g., ParticipantInvited)
+  public Guid Id { get; set; } //Unique = Guid.NewGuid();
+
+  public string EventName { get; set; } // The type of event (e.g., ParticipantInvited)
   public string Pathway { get; set; }  // The pathway name (e.g., Cancer Screening)
 
+  public string Topic { get; set; } // The message topic, which correlates to the 'queue' the message is sent to
   public string NhsNumber { get; set; }
   public string Payload { get; set; } // Additional data specific to the event
 }

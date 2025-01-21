@@ -1,4 +1,5 @@
 using System.Configuration;
+using ContextManager.API.Services;
 using Microsoft.Azure.Functions.Worker;
 using Microsoft.Azure.Functions.Worker.Builder;
 using Microsoft.Extensions.Configuration;
@@ -29,6 +30,11 @@ builder.Services.AddHttpClient<IAuditApiClient, AuditApiClient>((sp, client) =>
   client.BaseAddress = new Uri(Environment.GetEnvironmentVariable("ApiClients:AuditApiClientUri"));
 });
 
+builder.Services.AddHttpClient<IContextManagerService, ContextManagerApiClient>((sp, client) =>
+{
+  client.BaseAddress = new Uri(Environment.GetEnvironmentVariable("ApiClients:ContextManagerApiClientUri"));
+});
+
 builder.Services
   .AddLogging(logging =>
   {
@@ -40,6 +46,7 @@ builder.Services
   .AddScoped<CreateParticipantEpisode>()
   .AddScoped<GetParticipantDetails>()
   .AddScoped<UpdateParticipantPathwayStatus>()
+  .AddScoped<MockProduct>()
   .AddApplicationInsightsTelemetryWorkerService()
   .ConfigureFunctionsApplicationInsights();
 

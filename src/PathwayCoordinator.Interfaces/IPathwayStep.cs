@@ -4,5 +4,5 @@ namespace PathwayCoordinator.Interfaces;
 
 public interface IPathwayStep
 {
-  public Task ExecuteAsync(GenericEvent eventDetails);
+  public Task<Task> ExecuteAsync(GenericEvent eventDetails);
 }

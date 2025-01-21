@@ -5,7 +5,7 @@ namespace PathwayCoordinator.PathwayManager.Steps;
 
 public class CreateAppointmentInNationalBooking : IPathwayStep
 {
-    public Task ExecuteAsync(GenericEvent eventDetails)
+    public Task<Task> ExecuteAsync(GenericEvent eventDetails)
     {
         throw new NotImplementedException();
     }

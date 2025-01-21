@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Audit.Api", "Audit.Api\Audi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Clients", "Shared.Clients\Shared.Clients.csproj", "{2B5D903E-7B36-4B5D-B0C9-9E7F2EB7081B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ContextManager.API", "ContextManager.API\ContextManager.API.csproj", "{82CDCC4D-EACC-48F3-9A3A-D0EF14A7FFAF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,5 +68,9 @@ Global
 		{2B5D903E-7B36-4B5D-B0C9-9E7F2EB7081B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B5D903E-7B36-4B5D-B0C9-9E7F2EB7081B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B5D903E-7B36-4B5D-B0C9-9E7F2EB7081B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{82CDCC4D-EACC-48F3-9A3A-D0EF14A7FFAF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{82CDCC4D-EACC-48F3-9A3A-D0EF14A7FFAF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{82CDCC4D-EACC-48F3-9A3A-D0EF14A7FFAF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{82CDCC4D-EACC-48F3-9A3A-D0EF14A7FFAF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

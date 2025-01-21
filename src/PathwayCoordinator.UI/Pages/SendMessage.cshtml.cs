@@ -1,3 +1,4 @@
+using System.Diagnostics.Tracing;
 using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -41,7 +42,7 @@ namespace PathwayCoordinator.UI.Pages
       //If all the data is populated, then we're going to submit to a queue
 
       if (string.IsNullOrEmpty(Event.Pathway) ||
-          string.IsNullOrEmpty(Event.TriggerEvent) ||
+          string.IsNullOrEmpty(Event.EventName) ||
           string.IsNullOrEmpty(Event.Payload) ||
           Event.Payload.Contains("{{"))
       {
@@ -49,12 +50,14 @@ namespace PathwayCoordinator.UI.Pages
         //dropdowns properly
         Pathways = await _apiClient.GetPathwaysAsync();
         AvailableSteps = Pathways.FirstOrDefault(p => p.Name == Event.Pathway)?.Steps;
-        PayloadTemplate = AvailableSteps.FirstOrDefault(s => s.TriggerEvent == Event.TriggerEvent)?.MessageTemplate.ToString();
+        PayloadTemplate = AvailableSteps.FirstOrDefault(s => s.TriggerEvent == Event.EventName)?.MessageTemplate.ToString();
         Event.Payload = PayloadTemplate;
+        Event.Topic = "PathwayCoordinator";
         return Page();
       }
       else
       {
+        Event.Topic = "PathwayCoordinator";
         await _apiClient.PublishEvent(JsonSerializer.Serialize(Event));
         // Return to the page after submission
         return RedirectToPage();

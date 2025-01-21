@@ -19,7 +19,7 @@ public class ParticipantEventHandler(
     logger.LogInformation($"Received message : {eventGridEvent.Data}");
     var genericEvent = JsonSerializer.Deserialize<GenericEvent>(eventGridEvent.Data);
     //Based on generic event determines which is the trigger event for given pathway
-    logger.LogInformation($"Received event on participant-events queue : {genericEvent.TriggerEvent}");
+    logger.LogInformation($"Received event on participant-events queue : {genericEvent.EventName}");
     var pathways = await pathwayApiClient.GetPathwaysAsync();
     var selectedPathway = pathways.FirstOrDefault(p => p.Name == genericEvent.Pathway);
     if (selectedPathway != null)

@@ -8,7 +8,7 @@ namespace PathwayCoordinator.Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class EventController(EventGridClientFactory clientFactory) : ControllerBase
+public class EventController(ILogger<EventController> logger, EventGridClientFactory clientFactory) : ControllerBase
 {
     [HttpPost]
     public async Task<IActionResult> PublishEvent([FromBody] string eventData)
@@ -16,11 +16,11 @@ public class EventController(EventGridClientFactory clientFactory) : ControllerB
         try
         {
             var evt = JsonSerializer.Deserialize<GenericEvent>(eventData);
-            var client = clientFactory.CreateClient(evt.TriggerEvent);
+            var client = clientFactory.CreateClient(evt.Topic);
             EventGridEvent egEvent =
                 new EventGridEvent(
                     "/pathways/participants/12345",
-                    evt.TriggerEvent,
+                    evt.EventName,
                     "0.1",
                     evt);
             // Send the event
@@ -29,6 +29,7 @@ public class EventController(EventGridClientFactory clientFactory) : ControllerB
         }
         catch (Exception ex)
         {
+            logger.LogError(ex, ex.Message);
             return BadRequest(new { Message = ex.Message });
         }
 

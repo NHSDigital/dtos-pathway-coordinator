@@ -34,7 +34,7 @@ public class PathwayApiClient(HttpClient httpClient): IPathwayApiClient
     }
     catch (Exception ex)
     {
-      throw new ApplicationException($"Error fetching pathways from API: {ex.Message}", ex);
+      throw new ApplicationException($"Error publishing event: {ex.Message}", ex);
     }
   }
 }

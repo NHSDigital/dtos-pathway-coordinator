@@ -6,7 +6,7 @@ public class EventAudit()
   public EventAudit(GenericEvent? genericEvent) : this()
   {
     NHSNumber = "12345";
-    EventName = genericEvent.TriggerEvent;
+    EventName = genericEvent.EventName;
     Pathway = genericEvent.Pathway;
     NextAction = "My Next Action";
   }

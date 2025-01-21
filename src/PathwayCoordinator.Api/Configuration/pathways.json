@@ -2,21 +2,29 @@
   {
     "Name": "Regular Breast Pathway",
     "Steps": [
-      { "Type": "AddParticipantToPathway", "TriggerEvent": "ParticipantEligible", "MessageTemplate": {}
-      },
-      { "Type": "CreateParticipantEpisode", "TriggerEvent": "ParticipantInvited", "MessageTemplate": { "nhsNumber": "{{nhsNumber}}" } },
-      { "Type": "InviteToBook", "TriggerEvent": "ParticipantReadyToBook", "MessageTemplate": { "nhsNumber": "{{nhsNumber}}" } }
+      { "Type": "MockProduct", "TriggerEvent": "ParticipantEligible", "MessageTemplate": {}},
+      { "Type": "MockProduct", "TriggerEvent": "ParticipantInvited", "MessageTemplate": { "nhsNumber": "{{nhsNumber}}" } },
+      { "Type": "MockProduct", "TriggerEvent": "ParticipantReadyToBook", "MessageTemplate": { "nhsNumber": "{{nhsNumber}}" } }
     ]
   },
   {
     "Name": "High Risk Breast",
     "Steps": [
-      { "Type": "AddParticipantToPathway", "TriggerEvent": "ParticipantEligible", "MessageTemplate": {
+      { "Type": "MockProduct", "TriggerEvent": "ParticipantEligible", "MessageTemplate": {
         "nhsNumber": "{{nhsNumber}}",
         "pathway" : "{{pathway}}"
         }
       },
-      { "Type": "UpdateParticipantPathwayStatus", "TriggerEvent": "ParticipantAccepted", "MessageTemplate": { "Status": "Invited" } }
+      { "Type": "MockProduct", "TriggerEvent": "ParticipantAccepted", "MessageTemplate": { "Status": "Invited" } }
+    ]
+  },
+  {
+    "Name": "Regular Breast Pathway1",
+    "Steps": [
+      { "Type": "UpdateParticipantToCohort", "TriggerEvent": "ParticipantUpdate", "MessageTemplate": {}},
+      { "Type": "UpdateParticipantToCohort", "TriggerEvent": "ParticipantIsEligible", "MessageTemplate": {}},
+      { "Type": "CreateParticipantEpisode", "TriggerEvent": "ParticipantInvited", "MessageTemplate": { "nhsNumber": "{{nhsNumber}}" } },
+      { "Type": "InviteToBook", "TriggerEvent": "ParticipantReadyToBook", "MessageTemplate": { "nhsNumber": "{{nhsNumber}}" } }
     ]
   }
 ]

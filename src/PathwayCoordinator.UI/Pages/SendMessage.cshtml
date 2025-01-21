@@ -14,7 +14,7 @@
       {
         <div>
           <label class="nhsuk-label" for="eventSelect">Trigger Event</label>
-          <select class="nhsuk-select" id="eventSelect" name="TriggerEvent" asp-for="Event.TriggerEvent" asp-items="@(new SelectList(Model.AvailableSteps, "TriggerEvent", "TriggerEvent"))" onchange="this.form.submit('change')">
+          <select class="nhsuk-select" id="eventSelect" name="EventName" asp-for="Event.EventName" asp-items="@(new SelectList(Model.AvailableSteps, "TriggerEvent", "TriggerEvent"))" onchange="this.form.submit('change')">
             <option value="">Select an Event</option>
           </select>
         </div>
@@ -31,7 +31,7 @@
           </textarea>
         </div>
       }
-      <button class="nhsuk-button" type="submit" disabled="@(string.IsNullOrEmpty(Model.Event.Pathway) || string.IsNullOrEmpty(Model.Event.TriggerEvent))">Send Message</button>
+      <button class="nhsuk-button" type="submit" disabled="@(string.IsNullOrEmpty(Model.Event.Pathway) || string.IsNullOrEmpty(Model.Event.EventName))">Send Message</button>
     </form>
   </div>
   @if (TempData["Success"] != null)

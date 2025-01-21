@@ -16,7 +16,7 @@ public class AuditApiClient (HttpClient httpClient, ILogger<AuditApiClient> logg
 
     var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-    var response = await httpClient.PostAsync("http://localhost:5203/api/audit/events", content);
+    var response = await httpClient.PostAsync("/api/audit/events", content);
 
     if (response.IsSuccessStatusCode)
     {

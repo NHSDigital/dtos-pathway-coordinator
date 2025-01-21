@@ -9,8 +9,8 @@ namespace PathwayCoordinator.PathwayManager
   {
     public async Task ExecuteStepsAsync(Pathway pathway, GenericEvent genericEvent)
     {
-      logger.LogInformation($"About to execute event {genericEvent.TriggerEvent} for pathway {pathway.Name}");
-      var triggeredStep = pathway.Steps.FirstOrDefault(s => s.TriggerEvent == genericEvent.TriggerEvent);
+      logger.LogInformation($"About to execute event {genericEvent.EventName} for pathway {pathway.Name}");
+      var triggeredStep = pathway.Steps.FirstOrDefault(s => s.TriggerEvent == genericEvent.EventName);
 
       if (triggeredStep != null)
       {

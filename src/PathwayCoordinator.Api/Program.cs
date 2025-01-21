@@ -10,6 +10,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container
 builder.Services.AddControllers();
+
+
+builder.Services
+  .AddLogging(logging =>
+  {
+    logging.AddConsole();
+  });
+
 builder.Services.Configure<EventGridSettings>(
   builder.Configuration.GetSection("EventGrid"));
 builder.Services.AddSingleton<EventGridClientFactory>();

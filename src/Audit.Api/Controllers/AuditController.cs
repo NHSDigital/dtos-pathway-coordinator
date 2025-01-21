@@ -25,9 +25,9 @@ public class AuditController(AuditDbContext dbContext) : ControllerBase
 
     if (!string.IsNullOrEmpty(nhsNumber))
     {
-      query = query.Where(e => e.NHSNumber == nhsNumber);
+      query = query.Where(e => e.NHSNumber == nhsNumber).OrderBy(x => x.Timestamp);
     }
 
-    return Ok(await query.ToListAsync());
+    return Ok(await query.OrderBy(x => x.Timestamp).ToListAsync());
   }
 }

@@ -7,7 +7,7 @@ namespace PathwayCoordinator.PathwayManager.Steps
 {
   public class UpdateParticipantPathwayStatus(ILogger<UpdateParticipantPathwayStatus> logger) : PathwayStepBase(logger)
   {
-    public override Task ExecuteAsync(GenericEvent details)
+    public override async Task<Task> ExecuteAsync(GenericEvent details)
     {
       logger.LogInformation($"Would update the participant details to: {details}");
       return Task.CompletedTask;
